@@ -8,6 +8,7 @@ inputs:
 
   default_foobar:
     description: "default foobarzinho"
+    required: true
     default: "default foobarzinho"
 
 outputs:
@@ -22,7 +23,7 @@ runs:
       shell: bash
       env:
         REQUIRED_FOOBAR: ${{ inputs.required_foobar }}
-        DEFAULT_FOOBAR: ${{ inputs.default_foobar && format('build-arg GH_TOKEN=" {0}"', inputs.default_foobar) }}
+        DEFAULT_FOOBAR: ${{ inputs.default_foobar && format('build-arg GH_TOKEN="{0}"', inputs.default_foobar) }}
       run: |
         echo Required foobar: $REQUIRED_FOOBAR.
         echo Default foobar: $DEFAULT_FOOBAR.

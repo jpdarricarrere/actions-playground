@@ -10,6 +10,11 @@ inputs:
     description: "default foobarzinho"
     default: "default foobarzinho"
 
+outputs:
+  barbaz:
+    description: "Output barbazinho"
+    value: ${{ steps.get-foobars.outputs.both-bars }}
+
 runs:
   using: "composite"
   steps:
@@ -21,3 +26,4 @@ runs:
       run: |
         echo Required foobar: $REQUIRED_FOOBAR.
         echo Default foobar: $DEFAULT_FOOBAR.
+        echo "both-bars=$(echo $REQUIRED_FOOBAR $DEFAULT_FOOBAR)" >> $GITHUB_OUTPUT

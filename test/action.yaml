@@ -1,0 +1,23 @@
+name: "Input Test Action"
+description: "Generic testing action"
+
+inputs:
+  required_foobar:
+    description: "required foobarzinho"
+    required: true
+
+  default_foobar:
+    description: "default foobarzinho"
+    default: "default foobarzinho"
+
+runs:
+  using: "composite"
+  steps:
+    - id: get-foobars
+      shell: bash
+      env:
+        REQUIRED_FOOBAR: ${{ inputs.required_foobar }}
+        DEFAULT_FOOBAR: ${{ inputs.default_foobar && format('build-arg GH_TOKEN=" {0}"', inputs.default_foobar) }}
+      run: |
+        echo Required foobar: $REQUIRED_FOOBAR.
+        echo Default foobar: $DEFAULT_FOOBAR.

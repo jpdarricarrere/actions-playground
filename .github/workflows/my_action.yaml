@@ -10,7 +10,6 @@ on:
       default_foobar:
         description: "default foobarzinho"
         required: false
-        default: "default foobarzinho"
 
 jobs:
   hello_world_job:

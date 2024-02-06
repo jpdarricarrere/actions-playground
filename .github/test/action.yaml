@@ -8,7 +8,7 @@ inputs:
 
   default_foobar:
     description: "default foobarzinho"
-    required: true
+    required: false
     default: "default foobarzinho"
 
 outputs:
